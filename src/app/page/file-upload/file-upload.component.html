@@ -1,0 +1,50 @@
+<div class="container">
+    <h1> CCEE Challenge - Importar arquivos</h1>
+
+    <div class="text-center">
+        <input class="form-control" type="file" 
+                (change)="onChange($event)">
+    
+        <button mat-raised-button color="primary" (click)="onUpload()" 
+            class="btn-upload">
+            Upload
+        </button>
+    </div>
+    
+    <div class="container" *ngIf="loading">
+        <h3>Loading ...</h3>
+    </div>
+        <select
+        class="select-region"
+        (change)="changeRegion($event)">
+        <option value="">Escolher Regiao</option>
+        <option *ngFor="let region of regions">
+          {{ region }}
+        </option>
+      </select>
+      <div class="cards">
+        <mat-card>
+            <mat-card-header>
+              <mat-card-title>Geração</mat-card-title>
+              <mat-card-subtitle>Total do valor geração por Regiao</mat-card-subtitle>
+            </mat-card-header>
+                <div class="total">
+                  {{consolidateRegionData?.geracao | number}}
+                </div>
+        </mat-card>
+
+        <mat-card>
+            <mat-card-header>
+              <mat-card-title>Compra</mat-card-title>
+              <mat-card-subtitle>Total do valor compra por Regiao</mat-card-subtitle>
+            </mat-card-header>
+                <div class="total">
+                  {{consolidateRegionData?.compra | number}}
+                </div>
+        </mat-card>
+      </div>
+      
+      <div></div>
+
+</div>
+
